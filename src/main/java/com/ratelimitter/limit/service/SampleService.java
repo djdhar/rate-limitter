@@ -1,6 +1,6 @@
 package com.ratelimitter.limit.service;
 
-import com.ratelimitter.limit.util.FixedWindowRateLimitter;
+import com.ratelimitter.limit.model.RateLimitterModel;
 import com.ratelimitter.limit.util.RateLimitter;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +12,12 @@ public class SampleService implements SampleServiceInterface {
     public SampleService(RateLimitter rateLimitter) {
         this.rateLimitter = rateLimitter;
     }
-    public Map<String, String> sampleGetExecute(Map<String, String> headers) {
-        if (headers.containsKey("userid")
-                && rateLimitter.checkRateLimitterApproval(headers.get("userid"))) {
-            return Map.of("request", "success");
+    public RateLimitterModel sampleGetExecute(Map<String, String> headers) {
+        if (headers.containsKey("userid")) {
+                RateLimitterModel limitter = rateLimitter.checkRateLimitterApproval(headers.get("userid"));
+            return limitter;
         } else {
-            return Map.of("request", "failure");
+            return null;
         }
     }
 }

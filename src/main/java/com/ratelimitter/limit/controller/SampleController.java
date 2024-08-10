@@ -1,5 +1,6 @@
 package com.ratelimitter.limit.controller;
 
+import com.ratelimitter.limit.model.RateLimitterModel;
 import com.ratelimitter.limit.service.SampleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -16,7 +17,7 @@ public class SampleController {
     }
 
     @GetMapping("/sample/api")
-    public Map<String, String> sampleGet(@RequestHeader Map<String, String> headers) {
+    public RateLimitterModel sampleGet(@RequestHeader Map<String, String> headers) {
         return sampleService.sampleGetExecute(headers);
     }
 }
