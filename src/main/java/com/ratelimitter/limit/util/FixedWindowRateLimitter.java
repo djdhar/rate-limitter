@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
 
-@Component
+//@Component
 public class FixedWindowRateLimitter extends RateLimitter {
 
     RedisTemplate<String, Object> redisTemplate;
